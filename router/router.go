@@ -4,7 +4,10 @@ import (
 	"auth/handler"
 	"auth/middleware"
 
+	_ "auth/docs"
+
 	"github.com/gorilla/mux"
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
 func NewRouter() *mux.Router {
@@ -18,6 +21,8 @@ func NewRouter() *mux.Router {
 	r.HandleFunc("/public/info", handler.Public).Methods("GET")
 
 	r.HandleFunc("/protected/profile", middleware.AuthGuard(handler.Profile)).Methods("GET")
+
+	r.PathPrefix("/swagger/").Handler(httpSwagger.WrapHandler)
 
 	return r
 }

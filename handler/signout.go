@@ -8,6 +8,18 @@ import (
 	"strings"
 )
 
+// SignOut godoc
+// @Summary      Log out the current user
+// @Description  Signs the user out and revokes their session via Supabase Auth
+// @Tags         Auth
+// @Accept       json
+// @Produce      json
+// @Param        Authorization header string true "Bearer token"
+// @Success      200 {object} object
+// @Success      204 {object} object
+// @Failure      401 {object} map[string]string
+// @Failure      500 {object} map[string]string
+// @Router       /auth/signout [post]
 func SignOut(w http.ResponseWriter, r *http.Request) {
 	authHeader := r.Header.Get("Authorization")
 	if authHeader == "" || !strings.HasPrefix(authHeader, "Bearer ") {

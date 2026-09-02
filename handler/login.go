@@ -9,6 +9,17 @@ import (
 	"os"
 )
 
+// Login godoc
+// @Summary      Log in an existing user
+// @Description  Authenticates a user and returns access/refresh tokens via Supabase Auth
+// @Tags         Auth
+// @Accept       json
+// @Produce      json
+// @Param        user body model.User true "User credentials"
+// @Success      200 {object} object
+// @Failure      400 {object} map[string]string
+// @Failure      500 {object} map[string]string
+// @Router       /auth/login [post]
 func Login(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 

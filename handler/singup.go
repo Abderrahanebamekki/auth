@@ -9,6 +9,18 @@ import (
 	"os"
 )
 
+// SingUp godoc
+// @Summary      Sign up a new user
+// @Description  Creates a new user account via Supabase Auth
+// @Tags         Auth
+// @Accept       json
+// @Produce      json
+// @Param        user body model.User true "User credentials"
+// @Success      200 {object} object
+// @Success      201 {object} object
+// @Failure      400 {object} map[string]string
+// @Failure      500 {object} map[string]string
+// @Router       /auth/signup [post]
 func SingUp(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
